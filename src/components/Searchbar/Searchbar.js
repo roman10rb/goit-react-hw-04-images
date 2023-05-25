@@ -1,60 +1,58 @@
 import PropTypes from 'prop-types';
-import { Component } from "react";
+import { useState } from 'react';
 import css from './Searchbar.module.css';
 import { toast, ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 
   
   
-class Searchbar extends Component {
+const Searchbar = ({onSubmit}) => {
 
-  state = {
-    name: '',
+  const [name, setName] = useState('')
+
+
+
+  const handleChange = (event) => {
+
+    setName(event.currentTarget.value)
+    
   };
 
+  const reset = () => {
+    setName('')
+  };
 
-  handleChange = (event) => {
-    this.setState({
-      name: event.currentTarget.value,
-    })
-  }
-  reset = () => {
-    this.setState({
-      name: '',
-    })
-  }
-
-  handleSubmit = (event) => {
+const  handleSubmit = (event) => {
     event.preventDefault();
-    if (this.state.name.trim() === '') {
+    if (name.trim() === '') {
       toast.warning('Please write the message !')
       return
     }
 
-    this.props.onSubmit(this.state.name)
-    this.reset();
+   onSubmit(name)
+    reset();
   }
     
-  render() {
+ 
     return (
      <header className={css.Searchbar}>
-  <form className={css.SearchForm} onSubmit={this.handleSubmit}>
+  <form className={css.SearchForm} onSubmit={handleSubmit}>
     <button type="submit" className={css.SearchFormButton}>
       <span >Search</span>
     </button>
 
           <input
             className={css.SearchFormInput}
-      onChange={this.handleChange}
+      onChange={handleChange}
             type="text"
-            value={this.state.name}
+            value={name}
       placeholder="Search images and photos"
     />
         </form>
         <ToastContainer autoClose={1000}/>
 </header>
     )
-  }
+  
 }
 
 

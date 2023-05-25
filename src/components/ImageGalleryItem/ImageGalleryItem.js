@@ -2,9 +2,6 @@ import css from './ImageGallaryItem.module.css';
 import PropTypes from 'prop-types';
 export default function ImageGallaryItem({ name, onClick }) {
     
-
-
-
     return (
             
         name.map(({ id, webformatURL, tags, largeImageURL }) =>
