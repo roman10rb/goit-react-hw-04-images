@@ -44,7 +44,6 @@ const App = () => {
                 .then(({ hits, totalHits }) => {
           if (hits.length === 0) {
             setEmpty(true);
-            toast.info('No images with this name')
             return;
                   }       
                   setImages(prevImages => [...prevImages, ...hits]);
@@ -117,6 +116,7 @@ const App = () => {
 
     return (
       <>
+        {empty && toast.info('No images with this name')}
         {error && toast.error(error)}
         <Searchbar onSubmit={handleSubmit} />
         <ToastContainer autoClose={1000}/>
