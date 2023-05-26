@@ -3,14 +3,15 @@ import ImageGallaryItem from "components/ImageGalleryItem/ImageGalleryItem";
 import css from './ImageGallary.module.css'
 
 
-export default function ImageGallary({ name, onClick })  {
+export default function ImageGallary({ names, onClick }) {
+
 
         return (
 
             <div>
                 <ul className={css.ImageGallery}>
     
-                    <ImageGallaryItem name={name} onClick={onClick} />
+                    <ImageGallaryItem name={names} onClick={onClick} />
                 
                 </ul>
                  

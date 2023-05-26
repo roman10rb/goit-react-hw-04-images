@@ -6,8 +6,8 @@ import "react-toastify/dist/ReactToastify.css";
 
   
   
-const Searchbar = ({onSubmit}) => {
-
+const Searchbar = ({ onSubmit }) => {
+ 
   const [name, setName] = useState('')
 
 
